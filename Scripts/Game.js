@@ -20,7 +20,7 @@ function UpgradeCost(n,t)
 }
 function LevelFromXp(n)
 	{
-	return Math.min(Math.floor(n + 1), 999);
+	return Math.min(Math.floor(n + 1),99);
 }
 function SmartRound(n)
 	{
