@@ -1,3 +1,5 @@
+# Gain 5 Boosts per Breed Cycle instead of 0.1. That's it, lol
+
 # Critter Mound
 Originally developed by [/u/brave_powerful_ruler](https://www.reddit.com/user/brave_powerful_ruler).  Code moved to Github for collaboration after his passing.
 
