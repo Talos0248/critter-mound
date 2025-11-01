@@ -20,7 +20,7 @@ function UpgradeCost(n,t)
 }
 function LevelFromXp(n)
 	{
-	return Math.min(Math.floor(n + 1),99);
+	return Math.min(Math.floor(n + 1),999);
 }
 function SmartRound(n)
 	{
@@ -663,7 +663,37 @@ var ticksPerSecond=20,game,GameController=function()
 	}
 	,n.prototype.BreedCheck=function(n)
 		{
-		if(n||this.father().currentHealth()>=this.father().health&&this.mother().currentHealth()>=this.mother().health?(this.Breed(this.mother(),this.father(),"Royal"),!n&&this.boosts()<this.maxBoosts()&&this.boosts(Math.min(Math.round((this.boosts() + 5) * 10) / 10, this.maxBoosts())):this.pauseBreeding()||(this.mother().currentHealth(this.mother().currentHealth()+this.mother().health/this.mother().actionTime),this.father().currentHealth(this.father().currentHealth()+this.father().health/this.father().actionTime)),this.prince().currentHealth()>=this.prince().health&&this.princess().currentHealth()>=this.princess().health)this.Breed(this.princess(),this.prince(),"Heir");
+			// If n is true OR both parents are at full health, breed Royal and possibly apply boosts.
+			// Otherwise, if breeding is not paused, restore parents' health over actionTime.
+			if (n || (this.father().currentHealth() >= this.father().health &&
+			          this.mother().currentHealth() >= this.mother().health)) {
+			    this.Breed(this.mother(), this.father(), "Royal");
+			
+			    if (!n && this.boosts() < this.maxBoosts()) {
+			        this.boosts(
+			            Math.min(
+			                Math.round((this.boosts() + 5) * 10) / 10,
+			                this.maxBoosts()
+			            )
+			        );
+			    }
+			} else {
+			    if (!this.pauseBreeding()) {
+			        this.mother().currentHealth(
+			            this.mother().currentHealth() + this.mother().health / this.mother().actionTime
+			        );
+			        this.father().currentHealth(
+			            this.father().currentHealth() + this.father().health / this.father().actionTime
+			        );
+			    }
+			}
+			
+			// If prince and princess are at full health, breed Heir.
+			if (this.prince().currentHealth() >= this.prince().health &&
+			    this.princess().currentHealth() >= this.princess().health) {
+			    this.Breed(this.princess(), this.prince(), "Heir");
+			}
+
 		else if(this.sodDedicatedToBreeding()>0)
 			{
 			var r=this.sodRaw()/ticksPerSecond>this.sodPerSecondForBreeding()/ticksPerSecond?this.sodPerSecondForBreeding()/ticksPerSecond:this.sodRaw()/ticksPerSecond,t=this.princess().score*5,i=this.prince().score*5;
