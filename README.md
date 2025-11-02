@@ -1,6 +1,7 @@
 # Mod Changes:
-- Gain 5 Boosts per Breed Cycle instead of 0.1
+- Gain 10 Boosts per Breed Cycle instead of 0.1
 - Make levelling linear. 1 XP = 1 Level
+- Increase Level Cap from 99 to 999
 
 # Critter Mound
 Originally developed by [/u/brave_powerful_ruler](https://www.reddit.com/user/brave_powerful_ruler).  Code moved to Github for collaboration after his passing.
