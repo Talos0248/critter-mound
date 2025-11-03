@@ -1,6 +1,6 @@
 function StatVariance(n)
 	{
-	return Math.floor(n/5)+1
+	return Math.floor(n/25)+1
 }
 function RandomInRange(n,t)
 	{
