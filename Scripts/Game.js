@@ -1,6 +1,6 @@
 function StatVariance(n)
 	{
-	return n<1e3?Math.floor(n/50)+1:20
+	return Math.floor(n/5)+1
 }
 function RandomInRange(n,t)
 	{
@@ -47,7 +47,7 @@ var ticksPerSecond=20,game,GameController=function()
 		this.princeSort=ko.observable("score");
 		this.newGeneChanceRange=1e3;
 		this.traitMax=999999;
-		this.geneMax=100;
+		this.geneMax=1000;
 		this.missNewGene=ko.observable(0);
 		this.newGeneChance=ko.computed(function()
 			{
@@ -1299,7 +1299,7 @@ var ticksPerSecond=20,game,GameController=function()
 	}
 	,n.prototype.MutateStat=function(n,t,i,r)
 		{
-		var f=n<t?n-StatVariance(n):t-StatVariance(t),e=n>t?n+StatVariance(n):t+StatVariance(t),u=RandomInRange(f,e);
+		var f=n<t?t:n,e=n>t?n+StatVariance(n):t+StatVariance(t),u=RandomInRange(f,e);
 		return u<i&&(u=i),u>r&&(u=r),u
 	}
 	,n.prototype.DefaultCritter=function(n,t,i)
